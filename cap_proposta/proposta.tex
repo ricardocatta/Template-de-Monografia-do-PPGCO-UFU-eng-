@@ -1,0 +1,25 @@
+\chapter[Proposal]{Proposal}
+
+Mais um teste de Algoritmo (Alg.~\ref{alg:alg2}) e de um código (Cod.~\ref{code:code3})
+
+\lstinputlisting[language=Octave, caption={Mais um código de Octave}\label{code:code3}]{code/codigo_matlab.m}
+
+\begin{algorithm}
+\caption{Proposta de um outro algoritmo}\label{alg:alg2}
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \Leftarrow 1$
+\State $X \Leftarrow x$
+\State $N \Leftarrow n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+  \State $X \Leftarrow X \times X$
+  \State $N \Leftarrow \frac{N}{2} $  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+  \State $y \Leftarrow y \times X$
+  \State $N \Leftarrow N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}

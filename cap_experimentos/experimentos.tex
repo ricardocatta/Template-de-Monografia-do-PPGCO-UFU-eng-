@@ -1,0 +1,289 @@
+\chapter[Resultados e Discussões]{Resultados e Discussões}
+\label{Resultados e Discussões}
+A pergunta norteadora é a seguinte. Qual é a força total que age sobre um conjunto de partículas num dado volume $V$? Quando falamos em força, precisamos saber em qual categoria estamos interessados. Sabemos que as forças fundamentais são: força gravitacional, força eletromagnética, força nuclear forte e fraca. Entretanto, para a dinâmica dos fluidos, essa pergunta resulta em desafios adicionais, pois as forças mais relevantes para a dinâmica são forças do tipo não-fundamental, como as forças de fricção e de tensão sobre a partícula de fluido. Devido à presença de forças não fundamentais, o nível de dificuldade da modelagem do problema aumenta.
+
+Na eletrodinâmica clássica é feita basicamente a mesma pergunta que precisamos elaborar para a dinâmica dos fluidos. Qual é a força eletromagnética que age sobre todas as cargas em um volume $V$? A resposta vem com a integração da força de Lorentz sobre o volume considerado \cite{griffiths2005introduction, jackson1999classical}.
+\begin{equation}\label{Lorentz_int}
+    \textbf{F} = \int_{V}(\rho^{e} \textbf{E} + \textbf{J}^{e} \times \textbf{B}) \dd V,
+\end{equation}
+e quando queremos analisar a força por unidade de volume, temos:
+\begin{equation}\label{lorentz_por_vol}
+    \textbf{f} = \rho^{e} \textbf{E} + \textbf{J}^{e} \times \textbf{B},
+\end{equation}
+onde $\rho^{e}$ é a densidade de carga elétrica e $\textbf{J}^{e} =\rho^{e}\textbf{u}$.
+
+Usando as quatro equações de Maxwell e algumas manipulações vetoriais, podemos reescrever a equação \ref{lorentz_por_vol} como \cite{jackson1999classical, griffiths2005introduction} 
+\begin{equation}\label{balanço_de_momento_eletro}
+    \rho^{e} \textbf{E} + \textbf{J}^{e} \times \textbf{B} = \nabla \cdot \rttensor{\textbf{T}} -\varepsilon_{0}\mu_{0}\partial_{t}\textbf{S},
+\end{equation}
+onde o tensor $\rttensor{\textbf{T}}$ tem componentes $T_{ij} = \epsilon_{0}\left(E_{i}E_{j} - \frac{1}{2}\delta_{ij}E^{2}\right) + \frac{1}{\mu_{0}}\left(B_{i}B_{j} - \frac{1}{2}\delta_{ij}B^{2}\right)$, e $\textbf{S}$ é o vetor de Poynting. A equação \ref{balanço_de_momento_eletro} representa o balanço de momentum para a eletrodinâmica clássica.
+
+A possibilidade de encontrar o tensor para o campo eletromagnético a partir das quatro equações de Maxwell combinada com a equação de Lorentz (e naturalmente, sem a necessidade de hipóteses adicionais), foi a primeira motivação que nos levou a elaborar a pergunta análoga para o caso da dinâmica dos fluidos. Seria possível encontrarmos o tensor das tensões viscosas se houvesse as equações para os fluidos que fosse análoga às quatro equações de Maxwell? O termo de tensões viscosas proposto por Navier em 1827 \cite{naiver1827lois} e ampliado por Stokes em 1845 \cite{stokes2007theories} partiu de uma hipótese a priori (conhecida como a “hipótese de Stokes”) da isotropia do espaço nas menores escalas \cite{batchelor2000introduction}\cite{panton2013incompressible}. Seria tentador se houvesse as quatro equações para os fluidos e pudéssemos encontrar o tensor de tensões viscoso sem a referida hipótese de isotropia a priori.
+
+Posto o questionamento principal deste trabalho, observamos duas vias bem distintas de pensamento para atacar o problema. Uma das alternativas consiste em adotar a posteriori a validade das equações de N-S e, a partir delas, manipular as equações de modo a encontrar as quatro equações dos fluidos.  A outra consiste em inicialmente encontrar as 4 equações e, a partir delas, encontrar o tensor de tensões viscosas. Os detalhes dessas duas linhas de pensamento serão abordados a seguir.
+
+\section{Primeira abordagem}
+
+Voltemos ao ano de 1823 \cite{truesdell1953notes}, quando Cauchy propôs a seguinte forma para o balanço de momentum:
+\begin{equation}\label{cauchy}
+\rho(\partial_{t} u_{i}+ u_{j}\partial_{j} u_{i})= \partial_{j}\sigma_{ij}.
+\end{equation}
+
+A princípio, trataremos o tensor de tensões $\sigma_{ij}$ como desconhecido, ou seja, iremos simplesmente substituir o divergente desse tensor como uma força por unidade de volume $f_{i}$. Dessa forma, temos
+\begin{equation}\label{cauchy1}
+\rho(\partial_{t} u_{i}+ u_{j}\partial_{j} u_{i})=f_i.
+\end{equation}
+
+Com um pouco de manipulação tensorial, podemos reescrever a equação \ref{cauchy1} como:
+\begin{equation}\label{cauchy2}
+\rho\left(\partial_{t} u_{i}+ \partial_{i}\left(\frac{1}{2}u^2\right) - \varepsilon_{ijk}\varepsilon_{kpq}u_{j}\partial_{p}u_{q}\right)=f_i,
+\end{equation}
+onde $\varepsilon_{kpq}$ são os componentes do tensor de Levi-Civita e $u_{j}\partial_{j} u_{i} = \partial_{i}\left(\frac{1}{2}u^2\right) - \varepsilon_{ijk}\varepsilon_{kpq}u_{j}\partial_{p}u_{q}$.
+
+Agora, reescreveremos a equação \ref{cauchy2} em sua forma vetorial para facilitar a identificação da analogia que buscamos. Em seguida, definimos o conhecido vetor densidade de fluxo mássico $\textbf{J}$ e dois novos campos. O campo de aceleração $\textbf{A}$ e o campo de vórtice $\textbf{V}$ (que é função da vorticidade {\boldmath$\omega$}), com isso encontramos
+\begin{equation}\label{lorentz_cauchy}
+    \rho \textbf{A} + \textbf{J} \times \textbf{V}= \textbf{f} ,
+\end{equation}
+onde $\textbf{J} = \rho \textbf{u}$, $\textbf{A} = \partial_{t}\textbf{u} + \nabla(\frac{1}{2}u^2)$ e $\textbf{V} = - \nabla\times\textbf{u}$ = -{\boldmath$\omega$}.
+
+É preciso chamar a atenção para o isomorfismo entre a equação \ref{lorentz_cauchy} e a equação \ref{lorentz_por_vol}. Saber que podemos reescrever o lado esquerdo da equação de N-S, com a mesma estrutura matemática da equação de Lorentz por unidade de volume, cria possibilidades curiosas. Significa que, caso houvesse 4 equações da dinâmica dos fluidos análogas às 4 equações de Maxwell, poderíamos realizar as mesmas manipulações matemáticas e chegar em um tensor de tensões viscosas análogo ao tensor de Maxwell.
+
+Com as novas definições de campo de aceleração e campo de vórtice, temos mais um paralelo com o eletromagnetismo. O campo de aceleração tem estrutura análoga ao campo elétrico, o campo de vórtice é análogo ao campo magnético e o campo de velocidade do fluido é análogo ao potencial vetor eletromagnético.
+
+Agora podemos encontrar o primeiro par de equações da dinâmica dos fluidos a partir desses novos campos criados (essa ideia de primeiro par e segundo par de equações está baseada no tratamento matemático abordado por \cite{landau2013classical} na dedução das quatro equações de Maxwell). Voltemos para os novos campos propostos:
+\begin{equation}\label{campo_acelera}
+    \textbf{A} = \partial_{t}\textbf{u} + \nabla(\frac{1}{2}u^2),
+\end{equation}
+\begin{equation}\label{campo_vorti}
+    \textbf{V} =-\text{\boldmath$\omega$}.
+\end{equation}
+
+Aplicando o rotacional na equação \ref{campo_acelera} e o divergente na equação \ref{campo_vorti}, temos o primeiro par de equações da dinâmica dos fluidos.
+\begin{equation}\label{faradey_fluidos}
+    \nabla \times \textbf{A} = -\partial_{t} \textbf{V},
+\end{equation}
+\begin{equation}\label{gauss_mag_fluid}
+    \nabla \cdot \textbf{V}=0,
+\end{equation}
+lembrando é claro, que o rotacional do gradiente de uma função escalar ($\nabla\times\nabla(\frac{1}{2}u^2) = 0$), e o divergente de um rotacional de uma função vetorial ($\nabla\cdot\text{\boldmath$\omega$} = \nabla\cdot\nabla\times\textbf{u} = 0$), são identicamente nulos.
+
+Esse primeiro par de equações simboliza a cinemática dos fluidos. É um par de equações que não depende das forças envolvidas no escoamento. Podemos simplesmente entender que para a equação \ref{faradey_fluidos}, a variação temporal do campo de vórtice em um escoamento, induz a variação espacial no campo de aceleração. Essa interpretação é completamente análoga à lei de Faraday $\nabla \times \textbf{E} = -\partial_{t} \textbf{B}$. Pela equação \ref{gauss_mag_fluid}, o significado do divergente do campo de vórtice ser nulo, significa que os campos de vórtice sempre fecham em torno de si, como no caso do campo magnético.
+
+Para prosseguirmos e encontrarmos o segundo par de equações para os fluidos, hipóteses adicionais precisam ser introduzidas. Por simplicidade, consideramos que o fluido é incompressível, ou seja, $\nabla \cdot \textbf{u} = 0$, o que corresponde no eletromagnetismo à escolha do chamado calibre de Coulomb. O próximo passo é aplicar o divergente na equação \ref{campo_acelera}.
+\begin{equation}\label{gauss_fluido}
+    \nabla \cdot \textbf{A} = \nabla^{2} \left(\frac{1}{2}u^{2}\right),
+\end{equation}
+que resulta análoga à lei de Gauss com $ \nabla^{2} \left(\frac{1}{2}u^{2}\right)$ fazendo o papel da densidade de carga.
+
+Por fim, para encontrarmos a última analogia aplicamos o rotacional na equação \ref{campo_vorti}.
+\begin{align*}
+    \nabla\times\textbf{V} &=   -\nabla\times\text{\boldmath$\omega$}\\
+    & = -\nabla\times\nabla\times\textbf{u}\\
+    & = \nabla^{2}\textbf{u} - \nabla \nabla\cdot\textbf{u},\\
+\end{align*}
+e utilizamos a incompressibilidade do fluido, obtendo 
+\begin{equation}\label{amper-max_fluido}
+\nabla\times\textbf{V} = \nabla^{2}\textbf{u}.
+\end{equation}
+
+Assim, podemos juntar as quatro equações em um sistema de equações que pode descrever a cinemática dos fluidos da seguinte forma:
+
+\begin{equation}\label{faradey_fluidos2}
+    \nabla \times \textbf{A} = -\partial_{t} \textbf{V},
+\end{equation}
+\begin{equation}\label{gauss_mag_fluid2}
+    \nabla \cdot \textbf{V}=0,
+\end{equation}
+\begin{equation}\label{gauss_fluido2}
+    \nabla \cdot \textbf{A} = \nabla^{2} \left(\frac{1}{2}u^{2}\right),
+\end{equation}
+
+\begin{equation}\label{amper-max_fluido2}
+\nabla\times\textbf{V} = \nabla^{2}\textbf{u}.
+\end{equation}
+
+Com essa primeira abordagem, não consideramos em momento algum a existência das equações de N-S. Nem mesmo as forças que estão atuando sobre as partículas de fluido. Contudo, essa abordagem não nos possibilitou um avanço para a teoria da dinâmica do fenômeno. Para incorporarmos aspectos das propriedades do fluido como viscosidade e as forças presentes sobre as partículas, optamos por uma nova abordagem. 
+
+\section{Segunda abordagem}
+A segunda linha de pensamento que pode ser desenvolvida parte de pressupostos diferentes da linha seguida anteriormente. Na primeira abordagem, com o auxílio da equação da continuidade, manipulamos apenas as equações do campo de aceleração \ref{campo_acelera} e do campo de vórtice \ref{campo_vorti}. Com essa manipulação foi possível encontrar as quatro equações para os fluidos. Agora, a segunda abordagem consiste em admitir a “priori” as equações de N-S, e então, encontrar as quatro equações para os fluidos. Assim, voltando à equação \ref{lorentz_cauchy}, reescrita logo abaixo
+\begin{equation}\label{lorentz_cauchy2}
+    \rho \textbf{A} + \textbf{J} \times \textbf{V}= \textbf{f},
+\end{equation}
+e combinando-a com a equação de N-S para fluidos incompressíveis sujeita a um campo de força gravitacional do tipo
+\begin{equation}\label{N-S_incompressivel}
+    \rho \left(\partial_t\textbf{u} + \nabla(\frac{u^2}{2}) - \textbf{u}\times\nabla\times\textbf{u}\right) + \nabla p - \rho\textbf{g} = \mu\nabla^{2}\textbf{u},
+\end{equation}
+podemos combinar o lado esquerdo da equação \ref{lorentz_cauchy2} com o lado direito da equação \ref{N-S_incompressivel} da seguinte forma:
+\begin{equation}\label{lorentz_NS}
+    \rho \textbf{A}' + \textbf{J} \times \textbf{V}= \mu\nabla^{2}\textbf{u},
+\end{equation}
+onde $\textbf{A}'$ é um novo campo de aceleração, envolvendo um campo de gradiente de pressão por densidade e o termo gravitacional dado por
+\begin{equation}\label{campo_acelera_NS}
+    \textbf{A}' = \partial_{t}\textbf{u} + \nabla\left(\frac{1}{2}u^2 + \frac{p}{\rho} + \frac{\zeta}{\rho}\right),
+\end{equation}
+onde podemos reescrever $\rho\textbf{g} = -\nabla\zeta$, por se tratar de uma força conservativa. Ou seja, a equação \ref{lorentz_NS} surge da combinação das equações de N-S com a equação \ref{lorentz_cauchy2}.
+
+Analisaremos as consequências imediatas dessas novas hipóteses. A diferença principal dessa abordagem é que ao adotarmos a equação de N-S alteramos o campo de aceleração, mas mantivemos o campo de vórtice. Portanto, quando aplicamos o divergente e o rotacional nas equações \ref{campo_acelera_NS}  e \ref{campo_vorti}, temos as seguintes quatro equações dos fluidos:
+\begin{equation}\label{faradey_fluidos2NS}
+    \nabla \times \textbf{A}' = -\partial_{t} \textbf{V},
+\end{equation}
+\begin{equation}\label{gauss_mag_fluid2NS}
+    \nabla \cdot \textbf{V}=0,
+\end{equation}
+\begin{equation}\label{gauss_fluido2NS}
+    \nabla \cdot \textbf{A}' = \nabla^{2} \left(\frac{1}{2}u^{2} + \frac{p}{\rho} + \frac{\zeta}{\rho}\right),
+\end{equation}
+\begin{equation}\label{amper-max_fluido2NS}
+\nabla\times\textbf{V} = \frac{1}{\mu}\left(\rho \textbf{A}' + \textbf{J} \times \textbf{V}\right).
+\end{equation}
+
+Se analisarmos apenas as forças conservativas (por unidade de massa) que atuam sobre uma partícula de fluido, incluindo a força peso, forças devido aos gradientes de pressão e de energia cinética, podemos estabelecer pela segunda lei de newton que:
+\begin{equation}\label{potencial_conserv}
+    - \frac{\nabla \zeta}{\rho} - \frac{\nabla p}{\rho} - \frac{\nabla u^2}{2}= \frac{\textbf{f}}{\rho}.
+\end{equation}
+
+Considerarmos $\Psi$, como o fluxo de forças conservativas (por unidade de massa) que atuam em uma dada superfície fechada de fluido.
+\begin{align*}
+    \Psi & = \oint_{\partial V} \left(-\frac{\nabla \zeta}{\rho} - \frac{\nabla p}{\rho} - \frac{\nabla u^2}{2}\right)\cdot \textbf{n} \,ds
+    \\
+    & = \oint_{\partial V} \text{\boldmath$\phi$}\cdot \textbf{n} \,ds,
+\end{align*}
+onde $\text{\boldmath$\phi$} = \left(-\frac{\nabla \zeta}{\rho} - \frac{\nabla p}{\rho} - \frac{\nabla u^2}{2}\right)$. Para reescrevermos a equação \ref{gauss_fluido2NS} de forma análoga à equação de Gauss, vamos partir de uma hipótese. A ideia é supor que o fluxo de aceleração da partícula de fluido sobre uma determinada superfície é proporcional à massa do fluido que atravessa esse volume. Essa hipótese é uma extensão da ideia de conservação de massa. Porém, ao invés de considerarmos o fluxo de \textbf{velocidade} de uma partícula proporcional à variação de massa no tempo, estamos considerando o fluxo de \textbf{aceleração} de uma partícula, como proporcional a massa que entra ou sai de um determinado volume. Deste modo, podemos integrar sobre a superfície de fluido a equação \ref{potencial_conserv}.
+\begin{equation*}
+    \oint_{\partial V} \text{\boldmath$\phi$}\cdot \textbf{n} \,ds = -\alpha m
+\end{equation*}
+\begin{equation*}
+    \int_{V} \nabla\cdot\text{\boldmath$\phi$} \,dV = -\alpha\int_{V} \rho \,dV,
+\end{equation*}
+sendo $\alpha$ o fator de proporcionalidade, com unidades de $[m^3/(kg.s^2)]$. O sinal de menos significa que se o fluxo de $\text{\boldmath$\phi$}$ é negativo, tem que ter massa entrando no sistema. Como a superfície $S$ e seu volume $V$ são completamente arbitrários, as duas integrações devem ser iguais, portanto
+\begin{equation}\label{potencial_conser}
+   \nabla\cdot\text{\boldmath$\phi$} =- \alpha\rho.
+\end{equation}
+
+Percebendo que $\nabla\cdot\text{\boldmath$\phi$} = - \nabla\cdot\textbf{A}'$, podemos igualar o lado direito da equação \ref{gauss_fluido2NS} com o lado direito da equação \ref{potencial_conser}, conseguindo finalmente a analogia com a lei de Gauss para os fluidos incompressíveis.
+\begin{equation*}\label{gauss_fluido3NS}
+    \nabla \cdot \textbf{A}' = \alpha\rho.
+\end{equation*}
+
+Podemos observar que a introdução da constante  $\alpha$, era o que faltava para finalizar o sistema de unidades necessário para obtermos a análoga equação de Gauss para os fluidos.
+
+Assim, até o momento, as quatro equações para a dinâmica dos fluidos na forma simplificada estão da seguinte maneira:
+\begin{equation}\label{faradey_fluidos3NS}
+    \nabla \times \textbf{A}' = -\partial_{t} \textbf{V},
+\end{equation}
+\begin{equation}\label{gauss_mag_fluid3NS}
+    \nabla \cdot \textbf{V}=0,
+\end{equation}
+\begin{equation}\label{gauss_fluido3NS}
+    \nabla \cdot \textbf{A}' = \alpha\rho,
+\end{equation}
+\begin{equation}\label{amper-max_fluido3NS}
+\nabla\times\textbf{V} = \frac{\rho}{\mu}\left( \textbf{A}' + \textbf{u} \times \textbf{V}\right).
+\end{equation}
+
+Claramente a equação \ref{amper-max_fluido3NS} não é análoga à equação de Ampére-Maxwell. Porém, acabamos encontrando as equações análogas do campo eletromagnético em um condutor em movimento, como apresentado em
+\cite{landau2013electrodynamics}. Ou seja, para um condutor em movimento, sabemos que o conjunto de equações é dado por:
+\begin{equation}\label{faradey_fluidos3NS2}
+    \nabla \times \textbf{E} = -\partial_{t} \textbf{B},
+\end{equation}
+\begin{equation}\label{gauss_mag_fluid3NS}
+    \nabla \cdot \textbf{B}=0,
+\end{equation}
+\begin{equation}\label{amper-max_fluido3NS2}
+\nabla\times\textbf{B} =\mu_{0}\sigma\left(\textbf{E} + \textbf{u} \times \textbf{B}\right) = \mu_{0}\textbf{J}^{e},
+\end{equation}
+onde $\textbf{J}^{e}=\sigma\left(\textbf{E} + \textbf{u} \times \textbf{B}\right)$ é a lei de Ohm generalizada, sendo $\sigma =\frac{1}{\rho^{e}} $.
+
+Esse fato nos possibilitou perceber que podemos reescrever a equação \ref{amper-max_fluido3NS} propondo uma nova forma:
+\begin{equation}\label{Navier-Ampere1}
+    \nabla\times\textbf{V} =\mu^{'}\textbf{J},
+\end{equation}
+onde $\mu^{'}$ tem unidades de [m/kg] e possui um valor constante que depende do fluido.
+
+A equação \ref{Navier-Ampere1} nos lembra um velho problema, que é a correção que Maxwell precisou realizar na equação de Ampére. O divergente dessa equação só é identicamente nulo para os casos incompressíveis. Até aqui tudo bem, pois assumimos essa hipótese desde o início. Mas para podermos terminar a analogia, precisamos estender o raciocínio para um caso mais geral; assim, após aplicar o divergente, acrescentamos um termo de correção para aparecer a equação da continuidade, e em seguida invocamos a equação \ref{gauss_fluido3NS},
+\begin{align}\label{Navier-Ampere-max}
+    \nabla\cdot\nabla\times\textbf{V} &=\mu^{'}(\nabla\cdot\textbf{J} +\partial_t{\rho})\\
+    & =\mu^{'}\left(\nabla\cdot\textbf{J} +\frac{1}{\alpha}\partial_t\nabla\cdot\textbf{A}^{'}\right)\\
+    & =\mu^{'}\nabla\cdot\left(\textbf{J} +\frac{1}{\alpha}\partial_t\textbf{A}^{'}\right),
+\end{align}
+ou seja, retirando o divergente, temos finalmente a última das quatro equações da fluidodinâmica:
+\begin{equation}\label{Navier-Ampere}
+    \nabla\times\textbf{V} =\mu^{'}\textbf{J} + +\frac{\mu^{'}}{\alpha}\partial_t\textbf{A}^{'}.
+\end{equation}
+
+Por fim, apresentamos um quadro comparativo para os campos que são análogos e um paralelo entre as equações de Maxwell e as encontradas para a fluidodinâmica:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{tabular}{|c c||} 
+ \hline
+  Eletrodinâmica & Fluidodinâmica \\ [0.5ex] 
+ \hline\hline
+  Campo elétrico \textbf{E} & Campo de aceleração \textbf{A}^{'} \\ 
+ \hline
+  Campo magnético \textbf{B} & Campo de vórtice \textbf{V} \\
+ \hline
+ Densidade de carga elétrica $\rho$^{e} & Densidade de massa do fluido $\rho$  \\
+ \hline
+  Potencial vetor \textbf{A}^{*} & Campo de velocidade \textbf{u}  \\
+  \hline
+  Emissividade elétrica \epsilon_{0} & $\frac{1}{\alpha}$  \\[1ex]
+  \hline
+  Permeabilidade magnética \mu_{0} & \mu^{'}  \\
+ \hline
+\end{tabular}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\begin{tabular}{|c c||} 
+ \hline
+  Equações de Maxwell & Fluidodinâmica \\ [0.5ex] 
+ \hline\hline
+  $ \nabla \times \textbf{E} = -\partial_{t} \textbf{B}$ ;  & $ \nabla \times \textbf{A}' = -\partial_{t} \textbf{V}$ \\ 
+ \hline
+  \nabla \cdot \textbf{B}=0  ; & \nabla \cdot \textbf{V}=0 \\
+ \hline
+ $\nabla \cdot \textbf{E} = \frac{\rho^{e}}{\epsilon_0}$ ; & $\nabla \cdot \textbf{A}' = \alpha\rho$ \\
+ \hline
+  $\nabla\times\textbf{B} = \mu_{0}\textbf{J}^{e} + \mu_{0}\epsilon_{0}\partial_t \textbf{E}$ ; & $\nabla\times\textbf{V} =\mu^{'}\textbf{J} + +\frac{\mu^{'}}{\alpha}\partial_t\textbf{A}^{'}$  \\
+ \hline
+\end{tabular}
+\end{center}
+%%%%%%%%%%%%%%%%
+
+Terminada a etapa da dedução das quatro equações dos fluidos, prosseguiremos na interpretação da consequência desse desenvolvimento teórico. Voltemos para o caso eletromagnético. Uma análise importante ocorre quando tomamos o campo elétrico como função do potencial vetor e do gradiente do potencial escalar, 
+\begin{equation*}
+    \textbf{E} = -\partial_t\textbf{A}^{*} - \nabla\phi,
+\end{equation*}
+e o campo magnético em função do rotacional do potencial vetor,
+\begin{equation*}
+    \textbf{B} = \nabla\times \textbf{A}^{*}.
+\end{equation*}
+
+Se substituirmos as definições acima, na equação \ref{amper-max_fluido3NS2}, obtemos a equação para o potencial vetor 
+\begin{equation}\label{potencial_vector_eq}
+    \partial_t \textbf{A}^{*} = \textbf{u}\times\nabla\times \textbf{A}^{*} + \rho^{e} \nabla^{2}\textbf{A}^{*} - \nabla\phi - \rho^{e}\nabla\nabla\cdot\textbf{A}^{*},
+\end{equation}
+percebemos que esse resultado tem a mesma estrutura das equações de N-S para fluidos incompressíveis,
+\begin{equation}\label{n-s_potencial}
+    \partial_t \textbf{u} = \textbf{u}\times\nabla\times \textbf{u} + \nu \nabla^{2}\textbf{u} - \nabla(\frac{u^2}{2}) - \frac{\nabla p}{\rho}.
+\end{equation}
+
+As implicações desse isomorfismo serão discutidas na conclusão.
+
+\section{O tensor das tensões viscosas}
+Tendo completado a analogia das 4 equações de Maxwell com as quatro equações dos fluidos, não faz mais sentido em falar em equações de N-S. A nova equação para o balanço de quantidade de movimento para os fluidos, já estipulando as substituições diretas, será:
+\begin{equation}\label{balanço_de_momento_fluido}
+    \rho \textbf{A}^{'} + \textbf{J} \times \textbf{V} = \nabla \cdot \rttensor{\textbf{T}} -\frac{\mu^{'}}{\alpha}\partial_{t}\textbf{S}^{'},
+\end{equation}
+onde $\textbf{S}^{'} = \frac{1}{\mu^{'}} (\textbf{A}^{'}\times\textbf{V})$ é o análogo ao vetor de Poynting; e os componentes do tensor $\rttensor{\textbf{T}}$ são:
+\begin{equation}\label{Tensor de maxwell}
+T_{ij} = \frac{1}{\alpha}\left(A'_{i}A'_{j} - \frac{1}{2}\delta_{ij}A'^{2}\right) + \frac{1}{\mu^{'}}\left(V_{i}V_{j} - \frac{1}{2}\delta_{ij}V^{2}\right),
+\end{equation}
+sendo a proposta do novo tensor das tensões viscosas, completamente análogo ao tensor de Maxwell do eletromagnetismo.

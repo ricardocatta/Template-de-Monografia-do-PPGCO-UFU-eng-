@@ -1,0 +1,266 @@
+\chapter[Introdução]{Introdução}
+
+\section{Uma breve introdução à história das equações de Navier-Stokes }
+
+Isaac Newton pode ser considerado como o pai da mecânica dos fluidos. Foi o primeiro a publicar artigos sobre a descrição do movimento dos fluidos através de equações diferenciais. O livro 2 do famoso \emph{Principia}, em que Newton descreve as propriedades dos fluidos e sua interação com os corpos imersos, consistiu em resultados originais para a época \cite{truesdell1953notes}. Newton abria mais um novo campo na física. Porém, os resultados experimentais não fechavam bem com sua teoria proposta. Coube à Academia de Berlim, em 1748, propor uma competição para premiar, em 1750, quem descrevesse a melhor teoria sobre os fluidos. Interessante reparar a ingenuidade dos organizadores em pensar que em apenas dois anos poderia haver uma teoria satisfatória para esse tema. Importante observar também como o apoio à pesquisa em universidades pode contribuir para avanços na área tecnológica.
+
+Grandes nomes da história da física e da matemática contribuíram para o desenvolvimento das equações da dinâmica dos fluidos: I. Newton, D. Bernoulli, J. L. d'Alambert, Leonard Euler, C. L. M. H. Navier, A. Cauchy, S.D. Poisson e G. G. Stokes, por exemplo. As principais contribuições serão apresentadas a seguir.
+\subsection{Convenção da notação utilizada}
+O uso da notação indicial com o cálculo tensorial facilita a álgebra dos tensores apresentados ao longo do trabalho. Para um melhor entendimento do cálculo tensorial, existe uma vasta literatura \cite{aris2012vectors}, \cite{jeffreys1961cartesian}, \cite{arfken1999mathematical} e \cite{morse1953mathematical}. Neste estudo será utilizada a convenção de soma de Einstein sempre que for conveniente, com uma nomenclatura que pode ser revista em \cite{frisch1995turbulence}. Assim, os operadores diferencias assumem a forma:
+\begin{equation}
+\dd_{t} \equiv \frac{\dd}{\dd t}, \quad
+    \partial_{t} \equiv \frac{\partial}{\partial t}, \quad \partial_{i} \equiv \frac{\partial}{\partial x_{i}}, \quad \partial_{ij} \equiv \frac{\partial^2}{\partial x_{i}\partial x_{j}}.  
+\end{equation}
+
+\subsection{I. Newton}
+Em 1687, com seu livro \emph{Principia}, Newton foi o primeiro a considerar matematicamente o fluido como contínuo (sem espaços vazios). Newton percebeu a relação linear que existe entre as tensões de cisalhamento do fluido e o gradiente de velocidade. Futuramente a classe de fluidos que seguem essa característica ficou conhecida como fluidos newtonianos. Em outras palavras, Newton propôs um modelo linear para as tensões viscosas em função do gradiente de velocidade, e o fator de proporcionalidade ficou conhecido como viscosidade molecular. 
+
+O modelo proposto por Newton parte de um campo de velocidade $\textbf{V}(x, y, z) = u \textbf{i} + v\textbf{j} + w\textbf{k}$, onde $\textbf{i}$, $\textbf{j}$ e $\textbf{k}$ são os vetores unitários ortogonais nas direções $x$, $y$ e $z$ respectivamente; $u$, $v$ e $w$ são os componentes do campo de velocidade e também são função de $x$, $y$ e $z$. A hipótese proposta parte de um escoamento bidimensional e ocorre apenas na direção $x$. A viscosidade de Newton é apresentada como
+\begin{equation*}
+    \tau = \mu\frac{du(y)}{dy},
+\end{equation*}
+onde $\tau$ é a tensão de cisalhamento, sendo a força por unidade de área; $\mu$ é a viscosidade molecular do fluido (considerada constante); $u(y)$ é função apenas de $y$.
+
+Essa contribuição dada por Newton foi de extrema importância para o desenvolvimento da dinâmica dos fluidos. Futuramente essa hipótese foi alterada pelo matemático e físico escocês G. G. Stokes, que a generalizou.
+
+\subsection{D. Bernoulli}
+Em 1738, com seu livro intitulado \emph{Hydrodynamic}, D. Bernoulli publicou um importante teorema para os fluidos invíscidos (fluidos sem viscosidade),
+\begin{equation}
+    p + \frac{1}{2}\rho v^2 + \rho g= C,
+\end{equation}
+sendo $p$ a pressão mecânica exercida, $\rho$ a densidade, $\frac{1}{2}\rho v^2$, a energia cinética específica do fluido, $\rho g$ a energia potencial gravitacional específica, e $C$ uma constante. Essa equação teve um impacto muito forte, por ser muito simples mas ter inúmeras aplicações na engenharia. 
+
+Entretanto, como essa equação só vale para fluidos sem viscosidade, ocorrem erros em muitas situações práticas ao aplicá-la, pois, como veremos mais a frente, não existe fluido com viscosidade zero (em um nível macroscópico).
+\subsection{L. Euler}
+Entre os anos de 1755 e 1757, foi a vez do grande matemático Leonard Euler dar uma contribuição revolucionária para a dinâmica dos fluidos. Euler propôs duas equações que podem ser utilizadas para escoamentos compressíveis e incompressíveis. Tais equações, apresentadas abaixo, ficaram conhecidas como equação da continuidade e equação de Euler, respectivamente:
+\begin{align*}
+    \partial_t \rho + \nabla \cdot (\rho\textbf{V}) &= 0,\\
+    \partial_t \textbf{V} + (\textbf{V}\cdot\nabla)\textbf{V} &=-\frac{1}{\rho} \nabla p + \textbf{g},
+\end{align*}
+onde $p$ é o campo de pressão exercido sobre a partícula de fluido, e $\textbf{g}$ é a aceleração da gravidade. 
+
+A equação da continuidade é bem entendida. Já a equação de Euler, também conhecida como a equação de transporte de momentum, tem do lado esquerdo da igualdade a soma de duas formas de aceleração. A primeira é uma aceleração que ocorre em um ponto fixo do espaço e a segunda que pode variar ao longo do espaço, mesmo que o tempo esteja fixo. O lado direito da equação de Euler tem um termo que é menos o gradiente de pressão, ou seja, diz que o escoamento se move sempre da maior para menor pressão, e o termo da aceleração da gravidade. O avanço na representação da dinâmica dos fluidos embutida nessa equação de transporte de momentum se deve principalmente ao fato do aparecimento do termo não linear (ou seja, aparece um termo proporcional a $v^2$). A não linearidade é uma das características mais marcantes nos escoamentos turbulentos — sendo o comportamento dos fluidos em sua forma caótica. 
+
+Até a presente data da publicação deste estudo, ninguém conseguiu provar a existência e unicidade das soluções gerais desse sistema de equação (dadas as devidas condições de contorno e iniciais) \cite{fefferman2000existence}.
+
+As equações de Euler são utilizadas para os fluidos ditos ideais — fluidos com viscosidade zero. Um importante resultado é que a integração dessas equações sobre um dado volume recai na equação proposta por D. Bernoulli. 
+
+É interessante ressaltar que a versão mais detalhada das equações da dinâmica dos fluidos (equações de Navier-Stokes), mesmo envolvendo um termo a mais, o termo viscoso, ainda é menos complexa do que as equações de Euler \cite{stewart2013great}. Uma das principais dificuldades de se obter as soluções das equações de Euler está no fato das soluções facilmente explodirem para infinito, justamente pela falta de um termo de amortecimento \cite{stewart2013great}. 
+
+\subsection{C.-L.-M.-H. Navier}
+Foi em 1822 que o físico e engenheiro naval Navier propôs o termo que faltava para descrever o escoamento dos fluidos viscosos. A contribuição de Navier foi apenas para fluidos newtonianos e incompressíveis, mas mesmo assim foi um enorme avanço para a dinâmica dos fluidos. O termo viscoso proposto é proporcional ao laplaciano da velocidade, como apresentado abaixo
+\begin{align*}
+    \nabla \cdot \textbf{V} &= 0,\\
+    \partial_t \textbf{V} + (\textbf{V}\cdot\nabla)\textbf{V} &=-\frac{1}{\rho} \nabla p + \nu \nabla^2\textbf{V} + \textbf{f},
+\end{align*}
+onde $\nu$ é a viscosidade cinemática do fluido e $\textbf{f}$ uma força de campo que estiver atuando sobra a partícula de fluido.
+
+A introdução do termo viscoso introduz sérias modificações no comportamento da equação de transporte de momentum. Listaremos algumas das principais. Primeiramente, a equação diferencial parcial agora é de segunda ordem. Assim, necessita-se de uma condição de contorno a mais, quando comparada com a equação de transporte de momentum proposta por Euler. Outra importante mudança reside no fato da perda da simetria temporal da equação. A equação de Euler é invariante sob uma inversão temporal, ou seja, a transformação $t\longrightarrow -t$ para as coordenadas que dependem do tempo, não altera a equação \cite{frisch1995turbulence}. O mesmo não é possível com as novas equações de Navier. A introdução do termo viscoso quebra a simetria temporal.
+
+Sabemos pelos teoremas de Emmy Noether \cite{lemos2007mecanica, goldstein2002classical} que uma simetria temporal está relacionada com a conservação de energia. Assim, chegamos à conclusão que adicionar o termo viscoso, por conseguinte, perder a importante característica de simetria temporal, era o que faltava para conseguirmos resultados mais coerentes entre a previsão teórica e os resultados experimentais.
+
+Particularmente, entendo que esse é o preço que pagamos por tentar modelar um efeito que é molecular, através de variáveis macroscópicas. Precisamos ressaltar que as variáveis do campo de velocidade e campo de pressão são variáveis médias — como demonstraremos com a equação de transporte de Boltzman. Nessa transferência de informação de quantidades moleculares para a escala macro ocorrem perdas, o que é totalmente condizente com a segunda lei da termodinâmica.
+
+\subsection{A. Cauchy}
+Quando Cauchy contribuiu para a dinâmica dos fluidos (1828), seu interesse inicial estava em aplicações da teoria óptica. Ele fez grandes esforços para criar uma teoria elástica da luz. Portanto, foi com analogias no campo da óptica que acabou surgindo uma proposta original sobre o comportamento das tensões sobre um fluido.
+
+A principal diferença da proposta de Cauchy para as equações de transporte de momentum de Euler e Navier está no conceito de pressão interna. A nova proposta seria que o tensor de tensões viscosas fosse proporcional a um gradiente de velocidade, sendo o fator de proporcionalidade um tensor isotrópico de quarta ordem. A apresentação do tensor será feita em seções seguintes. Agora iremos apresentar apenas a versão final do tensor
+\begin{equation*}\label{NS_final}
+\partial_{t}(\rho u_{i})+ \partial_{j} (\rho u_{j}u_{i})=  \partial_{j}\sigma_{ij},
+\end{equation*}
+onde $\sigma_{ij} = \left[\mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) + \lambda\partial_{k}u_{k}\delta_{ij}\right]$, $\mu$ é a viscosidade dinâmica do fluido e $\lambda$ é conhecido como o segundo coeficiente de viscosidade.
+
+Quando é aplicado o operador divergente sobre o termo $\lambda\partial_{k}u_{k}\delta_{ij}$, obtemos o gradiente de $\lambda\partial_{k}u_{k}$, que tem uma natureza bem próxima da pressão. Cauchy chamou esse tensor de pressão interna, e entendeu que a pressão mecânica que vinha nas equações de Euler e Navier eram desnecessárias e isso ajudaria a diminuir uma incógnita do problema. Porém, sua interpretação foi falha nesse aspecto, como constataremos na proposta de Poisson.
+\subsection{S. D. Poisson}
+
+Em 1829, Poisson percebeu o avanço proposto por Cauchy e identificou o erro cometido ao descartar a importância da pressão mecânica. Assim, a equação proposta por Poisson é a equação de Cauchy acrescentada do termo do gradiente de pressão
+\begin{equation*}\label{Poisson}
+\partial_{t}(\rho u_{i})+ \partial_{j} (\rho u_{j}u_{i})= -\partial_{i}p + \partial_{j}\left[\mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) +\lambda\partial_{k}u_{k}\delta_{ij}\right].
+\end{equation*}
+
+\subsection{G. G. Stokes}
+Finalmente chegamos na última grande contribuição para a dinâmica dos fluidos newtonianos. Em 1845, o físico e matemático G. G. Stokes propôs \cite{stokes2007theories} uma hipótese para eliminar o segundo coeficiente de viscosidade proposto por Cauchy e, assim, ter uma descrição completa do ponto de vista macroscópico dos fluidos newtonianos compressíveis e incompressíveis. A hipótese acabou ficando conhecida como "a hipótese de Stokes" e consiste em estabelecer uma relação entre a viscosidade dinâmica e o segundo coeficiente de viscosidade. Após algumas considerações matemáticas, Stokes estabeleceu que $\lambda = - \frac{2}{3}\mu$. A dedução detalhada desta hipótese será apresentada na seção seguinte.
+
+Para mais detalhes sobre a contribuição de cada um desses grandes cientistas, recomento a leitura de \cite{truesdell1953notes}. Neste trabalho, será enfatizada apenas a versão mais atual e completa dessas equações, proposta em definitivo por Stokes.
+
+\section{Dedução das equações da mecânica dos fluidos} 
+As equações da mecânica dos fluidos são um conjunto de equações da mecânica dos meios contínuos. Para identificarmos se o escoamento está na hipótese do contínuo, temos o número adimensional de  Knudsen $Kn = \frac{\lambda}{L}$, onde $\lambda$ é o livre caminho médio molecular e $L$ é a escala de comprimento físico que está sendo representada. Se a hipótese do contínuo é válida, é preciso que do ponto de vista numérico $Kn < 0,01$ \cite{karniadakis2006microflows}. 
+
+Para apresentarmos as equações da dinâmica dos fluidos, iremos discutir como as variáveis de campo contínuo são valores médios. Quando observamos do ponto de vista macroscópico um fluido escoando em regime laminar, os valores dos campos de velocidade, pressão, e densidade são valores médios, na verdade. As moléculas que constituem o fluido possui um movimento aleatório quando observadas na meso-escala. Porém, quando observadas na macroescala, a aleatoriedade é perdida. A passagem da meso-escala para a macro escala requer uma descrição estatística do fluido. Para isso, temos a função de distribuição $f(t, x_i, p_i)$ das moléculas de um fluido no seu espaço de fase. Em geral, a função depende do tempo, das coordenadas da posição ($x_i$) e do momento ($p_i$). Seja $d\tau = dx_{i}dp_i$ o elemento de volume no espaço de fase do fluido. O produto $fd\tau$ é o número médio de moléculas em um dado elemento $d\tau$ que tem valores $x_i$ e $p_i$ nos intervalos $dx_i$ e $dp_i$. 
+
+Chamaremos por $\Gamma$ o conjunto de todas as variáveis em que a função de distribuição depende. Nós separamos do elemento de volume de fase $\dtau$ o fator $dV = dxdydz$, e denotamos por $d\Gamma$ o restante das variáveis usadas. As quantidades $\Gamma$ tem três componentes do momentum $\textbf{p} = m\textbf{v}$ da partícula de fluido, assim $d\Gamma = d^{3}p$ \cite{pitaevskii2012physical}.
+
+A densidade de distribuição espacial das moléculas que constituem o fluido é
+\begin{equation}
+    N(t, x_{i}) = \int_{\Gamma} f(t, x_{i}, \Gamma) \dd\Gamma,
+\end{equation}
+sendo que o produto $NdV$ é o número médio de partículas de fluido em um dado volume $dV$.
+
+A dedução que faremos para as equações será uma extensão da dedução apresentado por \cite{pitaevskii2012physical}. Digo uma extensão pelo fato do Landau não deduzir a parte do tensor de tensões viscosas. O procedimento será por meio da equação de transporte de Boltzman \cite{landau2013course}
+\begin{equation}\label{boltzman_eq}
+    \partial_{t} f + \partial_{j}(v_{j}f) = C(f),
+\end{equation}
+onde $f$ é a função densidade de probabilidade, $C(f)$ é a taxa de mudança da função densidade de probabilidade devida às colisões que ocorrem na escala abaixo do contínuo. Por fim, $v_{j}$ são as componentes da velocidade das partículas transportadas.
+
+ As propriedades macroscópicas do fluido, digamos $\Bar{\phi}(t, x_{i})$, podem ser calculadas de forma geral, como:
+\begin{equation}
+    \Bar{\phi}(t, x_{i}) = \frac{1}{N(t, x_{i})} \int_{\Gamma} \phi(t, x_{i}, \Gamma) f(t, x_{i}, \Gamma) \dd\Gamma.
+\end{equation}
+
+Por exemplo, a partir da velocidade microscópica do fluido ($v_{i}$), podemos calcular a velocidade macroscópica $(u_{i})$,
+\begin{equation}\label{velocity_filter}
+    u_{i} = \Bar{v}_{i} = \frac{1}{N} \int_{\Gamma} v_{i}f \dd\Gamma.
+\end{equation}
+
+Assumiremos que as colisões entre as moléculas não alteram o número de partículas que estão colidindo nem a quantidade total de energia e momentum do sistema \cite{pitaevskii2012physical}. Em resumo, não consideraremos que $C(f)$ possa alterar as quantidades macroscópicas de cada elemento de volume do fluido, i.e. — densidade, energia interna, e velocidade macroscópica.
+\begin{equation}
+\int_{\Gamma} C(f) \dd\Gamma = 0,
+\end{equation}
+\begin{equation}
+\int_{\Gamma} e C(f) \dd\Gamma = 0,
+\end{equation}
+\begin{equation}\label{momentum_conservation}
+\int_{\Gamma} P_{i}C(f) \dd\Gamma = 0,
+\end{equation}
+onde $e$ e $P_{i} = mv_{i}$, são respectivamente, a energia interna e a quantidade de movimento das moléculas do fluido.
+\section{Equação da continuidade}
+Podemos deduzir a equação da continuidade por meio da equação \ref{boltzman_eq}. Para isso, precisamos multiplicar toda a equação pela massa da partícula de fluido $m$, e posteriormente, integrar toda a equação em $\dd\Gamma$.
+\begin{equation}
+\int_{\Gamma}[m\partial_{t}f + m\partial_{j}(v_{j}f) ]\dd\Gamma = m\int_{\Gamma} C(f) \dd\Gamma.
+\end{equation}
+
+Utilizando as propriedades apresentadas na seção anterior, e assumindo que a função de distribuição e a massa da partícula são contínuas.
+\begin{equation*}
+\partial_{t}\int_{\Gamma}mf\dd\Gamma + \partial_{j} \int_{\Gamma}(mv_{j}f)\dd\Gamma = 0
+\end{equation*}
+\begin{equation*}
+\partial_{t}(mN)+ \partial_{j} (mNu_{j})= 0,
+\end{equation*}
+sendo $\rho = mN$, a massa específica do volume de fluido. Ou seja
+\begin{equation}\label{continuity_eq}
+\partial_{t}\rho+ \partial_{j} (\rho u_{j})= 0.
+\end{equation}
+
+A equação da continuidade pode ser bem interpretada na sua forma integral. Ao integrarmos a equação \ref{continuity_eq} ao longo do volume macroscópico “infinitesimal”, $\dd V$, e utilizando o teorema de Gauss-Ostrogradsky: 
+\begin{equation*}
+\partial_{t}\int_{V}\rho \dd V = -\oint_{\partial V} \rho u_{j} \,ds_{j},
+\end{equation*}
+podemos interpretar que a taxa de variação da massa em um determinado volume, muda com o fluxo dos componentes da densidade de quantidade de movimento que atravessa a superfície que delimita o volume $\dd V$.
+
+\section{Equações de Navier-Stokes}
+O ponto de partida para a dedução das equações de Navier-Stokes (N-S) também se dá pela equação de transporte de Boltzman. Sabendo da conservação da quantidade de movimento das partículas que constituem o fluido, multiplicamos toda a equação \ref{boltzman_eq} por $mv_{i}$, e posteriormente integramos 
+\begin{equation*}
+\int_{\Gamma}[mv_{i}\partial_{t}f + mv_{i}\partial_{j}(v_{j}f) ]\dd\Gamma = \int_{\Gamma} mv_{i}C(f) \dd\Gamma
+\end{equation*}
+\begin{equation*}
+\int_{\Gamma}[\partial_{t}(mv_{i}f) + \partial_{j}(mv_{i}v_{j}f) ]\dd\Gamma = \int_{\Gamma} mv_{i}C(f) \dd\Gamma,
+\end{equation*}
+e usando as propriedades \ref{momentum_conservation} e \ref{velocity_filter}, temos
+\begin{equation*}
+\partial_{t}(mNu_{i})+ \partial_{j} (mN\overline{v_{j}v_{i}})= 0,
+\end{equation*}
+ou
+\begin{equation}\label{NS_f1}
+\partial_{t}(\rho u_{i})+ \partial_{j} (\rho\Pi_{ij})= 0,
+\end{equation}
+onde $\rho = mN$ e $\Pi_{ij} = \overline{v_{j}v_{i}}$, são os componentes do tensor fluxo de quantidade de movimento \cite{pitaevskii2012physical}.
+
+Agora chegamos no momento de decompor o tensor \boldsymbol{\Pi}. É interessante observar que o procedimento de filtragem das propriedades da meso-escala quando transportadas para a escala macroscópica é idêntico à Simulação das Grandes Escalas, termo em inglês para Large Eddy Simulation (LES) — método de modelagem do fenômeno da turbulência \cite{catta2018implementaccao}, \cite{sagaut2006large} e \cite{pope2000turbulent}.
+
+Para realizar a decomposição do tensor \boldsymbol{\Pi}, precisamos decompor o campo de velocidade das partículas que constituem o fluido. A decomposição é feita com uma parcela média $u_{i}$ e uma parcela flutuante $v^{'}_{i}$. De forma que $v_{i} = u_{i} + v^{'}_{i}$.
+\begin{equation}
+\begin{split}
+\Pi_{ij} = & \overline{v_{j}v_{i}} \\
+= &\overline{(u_{i} + v^{'}_{i})(u_{j} + v^{'}_{j})} \\
+=& u_{i}u_{j} + \overline{v^{'}_{i}v^{'}_{j}}.
+\end{split}
+\end{equation}
+
+As propriedades de filtragem utilizadas acima podem ser conferidas em diversas referências, como \cite{catta2018implementaccao}, \cite{sagaut2006large}, \cite{pitaevskii2012physical} e \cite{pope2000turbulent}.
+
+Agora podemos reescrever a equação \ref{NS_f1} como: 
+\begin{equation}\label{NS_f2}
+\partial_{t}(\rho u_{i})+ \partial_{j} (\rho u_{j}u_{i})= \partial_{j} \sigma_{ij},
+\end{equation}
+onde $\sigma_{ij} = -\overline{v^{'}_{i}v^{'}_{j}}$, são os componentes do tensor de tensões que atua na superfície da partícula de fluido na escala macroscópica. Tensor \boldsymbol{\sigma} precisa ser modelado, e sua forma definitiva foi proposta por \cite{stokes2007theories}. Porém, aqui será apresentada uma dedução mais moderna e completa, muito bem discutida em \cite{batchelor2000introduction}.
+
+O tensor de segunda ordem $\boldsymbol{\sigma}$ pode ter suas componentes decompostas em uma parte isotrópica $(\frac{1}{3}\sigma_{kk}\delta_{ij})$ — sendo $\delta_{ij}$ os componentes do tensor delta de Kronecker — e outra parte chamada deviatórica $(\sigma^{d}_{ij})$, tal que \cite{batchelor2000introduction}, 
+\begin{equation}\label{sigma_1}
+\sigma_{ij} = \frac{1}{3}\sigma_{kk}\delta_{ij} + \sigma^{d}_{ij}.
+\end{equation}
+
+Analisaremos inicialmente a parte isotrópica. Temos que $\sigma_{kk} = -\overline{v^{'}_{k}v^{'}_{k}}$, e, $\frac{1}{3}\overline{v^{'}_{k}v^{'}_{k}}$ é a filtragem da média do quadrado das flutuações das velocidades das partículas que constituem o fluido. Do ponto de vista da mecânica estatística, isso pode ser modelado como a pressão que as partículas de fluido exercem sobre a superfície, onde $p = \frac{1}{3}\overline{v^{'}_{k}v^{'}_{k}}$. Assim, a parte isotrópica do tensor $\boldsymbol{\sigma}$ pode ser modelada como $-p\delta_{ij}$.
+
+Agora podemos passar para a componente deviatórica do tensor $\boldsymbol{\sigma}$. Muitas vezes referido como tensor de tensões viscosas \cite{landau2013fluid}, \cite{white2006viscous}, $\boldsymbol{\sigma^{d}}$, é normalmente dado pelo símbolo $\boldsymbol{\tau}$. Tais tensões são resultantes da transferência irreversível do fluxo de quantidade de movimento devido aos choques moleculares que ocorrem quando temos velocidades relativas entre as moléculas que constituem o fluido \cite{landau2013fluid}. Em outras palavras, o tensor $\boldsymbol{\sigma}$ é constituído por componentes que representam o fluxo de quantidade de movimento devido à transferência de momento de forma reversível $-p\delta_{ij}$, e por componentes que representam o fluxo de quantidade de movimento de forma irreversível $\tau_{ij}$, 
+\begin{equation}\label{sigma_2}
+\sigma_{ij} = -p\delta_{ij} + \tau_{ij}.
+\end{equation}
+
+A modelagem do tensor $\boldsymbol{\tau}$ foi historicamente o maior desafio da teoria da dinâmica dos fluidos. A hipótese adotada é que nas menores escalas macroscópicas, considerando o fluido como um contínuo, o espaço é isotrópico e as tensões viscosas são proporcionais ao gradiente de velocidade \cite{batchelor2000introduction}. Matematicamente, isso é equivalente a 
+\begin{equation}\label{tau1}
+\tau_{ij} = A_{ijkl}\partial_{k}u_{l},
+\end{equation}
+onde $A_{ijkl}$ são os componentes de um tensor de quarta ordem isotrópico. Essa hipótese de isotropia, que acaba resultando em uma simetria espacial, implica uma simetria de translação e de rotação do sistema \cite{lesieur2008turbulence}. Isso condiz com a hipótese inicial adotada para a dedução via equação de transporte de Boltzman. Devido ao fato bem estabelecido pelos teoremas de Noether \cite{landau1982mechanics}, onde uma simetria translacional equivale a uma conservação da quantidade de movimento, temos a conservação de quantidade de movimento no limite entre as diferentes escalas. A forma geral para esse tensor é apresentada em \cite{jeffreys1961cartesian} em termos de suas componentes, com $A_{ijkl} = \mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \lambda\delta_{ij}\delta_{kl} + \alpha(\delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk})$. Assim
+\begin{equation}\label{tau2}
+\begin{split}
+\tau_{ij} = &A_{ijkl}\partial_{k}u_{l}\\
+=& \left[\mu(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}) + \lambda\delta_{ij}\delta_{kl} + \alpha(\delta_{ik}\delta_{jl} - \delta_{il}\delta_{jk})\right]\partial_{k}u_{l}\\
+=&\mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) + \lambda\partial_{k}u_{k}\delta_{ij} + \alpha\left(\partial_{j}u_{i} - \partial_{i}u_{j}\right).
+\end{split}
+\end{equation}
+
+Agora temos 3 constantes (que dependem do fluido) a determinar, $\mu$, $\lambda$ e $\alpha$. Para tal, precisamos assumir mais algumas hipóteses. A primeira é que o tensor $\boldsymbol{\tau}$ seja simétrico, ou seja,
+\begin{equation}\label{tau3}
+\begin{split}
+\tau_{ij} = & \tau_{ji}\\
+\mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) + \lambda\partial_{k}u_{k}\delta_{ij} + \alpha\left(\partial_{j}u_{i} - \partial_{i}u_{j}\right) = &\mu\left(\partial_{i}u_{j} + \partial_{j}u_{i}\right) + \lambda\partial_{k}u_{k}\delta_{ji} + \alpha\left(\partial_{i}u_{j} - \partial_{j}u_{i}\right)\\
+2\alpha\left(\partial_{j}u_{i} - \partial_{i}u_{j}\right)=&0\\
+\alpha = &0.
+\end{split}
+\end{equation}
+
+Com isso mostramos que a hipótese de simetria possibilita eliminar a componente anti-simétrica da equação \ref{tau2}, como seria de se esperar. Finalmente sobraram apenas duas constantes para serem determinadas. É precisamente nesta etapa que entra a famosa hipótese de Stokes apresentada em 1845, para determinar o segundo coeficiente de viscosidade ($\lambda$) \cite{stokes2007theories}. Como o tensor das tensões viscosas é um componente deviatórico, temos por definição que o seu traço (a soma da diagonal principal) é identicamente nulo.
+\begin{equation}\label{tau_semifinal}
+\begin{split}
+\tau_{kk} = & 0\\
+\mu\left(\partial_{k}u_{k} + \partial_{k}u_{k}\right) + \lambda\partial_{k}u_{k}\delta_{pp}  = &0\\
+2\mu\partial_{k}u_{k} + 3\lambda\partial_{k}u_{k}= &0\\
+\left(2\mu + 3\lambda\right)\partial_{k}u_{k}= &0.\\
+\end{split}
+\end{equation}
+Para fluidos incompressíveis e compressíveis, temos a hipótese de Stokes como:
+\begin{equation}\label{stokes_hypotesy}
+\begin{split}
+2\mu + 3\lambda= &0\\
+\lambda = -\frac{2}{3}\mu.
+\end{split}
+\end{equation}
+
+Desta maneira, podemos finalmente escrever os componentes do tensor de tensões viscosas em sua forma atual.
+\begin{equation}\label{tau_final}
+\tau_{ij} = \mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) - \dfrac{2}{3}\partial_{k}u_{k}\delta_{ij}.
+\end{equation}
+
+Portanto, a equação completa de N-S é:
+\begin{equation}\label{NS_final}
+\partial_{t}(\rho u_{i})+ \partial_{j} (\rho u_{j}u_{i})= -\partial_{i}p + \partial_{j}\left[\mu\left(\partial_{j}u_{i} + \partial_{i}u_{j}\right) - \dfrac{2}{3}\partial_{k}u_{k}\delta_{ij}\right].
+\end{equation}
+
+Uma boa compreensão dessa equação advém de sua forma integral. Definindo os componentes do tensor de fluxo de densidade de quantidade de movimento como $\Pi_{ij} = \rho u_{i}u_{j} - \sigma_{ij}$, com $\sigma_{ij} = -p\delta_{ij} + \tau_{ij}$ \cite{landau2013fluid}. 
+\begin{equation}\label{NS_integral}
+\partial_{t}\int_{V}\rho u_{i} \dd V = -\oint_{\partial V} \Pi_{ij} \,dS_{j}.
+\end{equation}
+
+Vemos que a taxa de variação da quantidade de movimento linear que ocorre dentro de um dado volume macroscópico $(\dd V)$, é determinada pelo fluxo de densidade de quantidade de movimento linear pela superfície ($\dd S_{j}$) que envolve um dado volume de fluido $(\partial V)$. Esse fluxo ocorre de forma não linear ($\rho u_{j}u_{i} $) e por componentes reversíveis $(p\delta_{ij})$ e irreverssíveis $(\tau_{ij})$.
+
+\section{A tentativa de uma teoria fechada para as tensões viscosas}
+Quando estudamos as leis de conservação no eletromagnetismo, é possível perceber profundas semelhanças entre a teoria matemática do eletromagnetismo e da mecânica dos fluidos. Mais especificamente, quando deduzimos a lei de conservação da quantidade de movimento linear na eletrodinâmica, temos a seguinte equação \cite{griffiths2005introduction, jackson1999classical}:
+\begin{equation}\label{equação_momento_el}
+\partial_{t}(P_i^{mec} + P_i^{em}) = \partial_{j} T_{ij},
+\end{equation}
+onde $P_i^{mec}$ são os componentes do vetor densidade do momento mecânico e $P_i^{em}$ são os componentes do vetor densidade do momento do campo eletromagnético. Nessa equação temos ainda os componentes do tensor de Maxwell, $T_{ij}$. Esse tensor de segunda ordem é fechado e é descrito pelo campo eletromagnético e suas propriedades do meio $(\epsilon_{0}, \mu_{0})$ \cite{griffiths2005introduction, jackson1999classical}.
+\begin{equation}\label{Tensor de maxwell}
+T_{ij} = \epsilon_{0}\left(E_{i}E_{j} - \frac{1}{2}\delta_{ij}E^{2}\right) + \frac{1}{\mu_{0}}\left(B_{i}B_{j} - \frac{1}{2}\delta_{ij}B^{2}\right)
+\end{equation}
+
+Deste modo, a grande motivação do trabalho é procurar um tensor para as equações da dinâmica dos fluidos que seja função de campos intrínsecos do movimento dos fluidos. Tais campos foram encontrados a partir da manipulação matemática das equações de Navier Stokes. Sendo os campos denominados por \textbf{campo de aceleração} e \textbf{campo de vorticidade} dos fluidos. O campo de aceleração fará o “papel” do campo elétrico na equação \ref{Tensor de maxwell} e o campo de vorticidade terá o “papel” do campo magnético.
